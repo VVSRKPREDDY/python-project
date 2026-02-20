@@ -28,6 +28,7 @@ jobs:
         with:
           args:
             -Dsonar.projectKey=calculator-app
+            -Dsonar.organization=VVSRKPREDDY
             -Dsonar.sources=app
             -Dsonar.language=py
             -Dsonar.python.coverage.reportPaths=coverage.xml
