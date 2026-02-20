@@ -44,3 +44,17 @@ jobs:
       - name: Docker Push
         run: |
           docker push ${{vars.DOCKER_UN2}}/my_python_app:latest
+      - name: Login to ACR
+        uses: docker/login-action@v3.7.0
+        with:
+          registry: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Tag Image for ACR
+        run: |
+          docker tag ${{ vars.DOCKER_UN2 }}/my_python_app:latest ${{ secrets.ACR_LOGIN_SERVER }}/my_python_app:latest
+
+      - name: Push to ACR
+        run: |
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/my_python_app:latest
