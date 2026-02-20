@@ -38,7 +38,7 @@ jobs:
           password: ${{secrets.DOCKER_PWD_2}}
       - name: Docker Setup Build
         run: |
-          docker build -t ${{vars.DOCKER_UN2}}/my_python_app:latest
+          docker build -t ${{vars.DOCKER_UN2}}/my_python_app:latest .
       - name: Docker Push
         run: |
           docker push ${{vars.DOCKER_UN2}}/my_python_app:latest
